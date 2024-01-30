@@ -1,5 +1,7 @@
 import express from "express";
+import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+dotenv.config({ path: "./backend/config/config.env" });
 
 export const app = express()
 
@@ -10,4 +12,4 @@ app.use(cookieParser())
 
 
 import { userRouter } from "./routes/User.js"
-app.use("/api/v1", userRouter);
+app.use(`${process.env.base_url}/api/v1`, userRouter);
